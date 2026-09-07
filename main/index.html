@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>Strip Controll</title>
         <link rel="stylesheet" href="styles.css" />
-        <script src="scripts.js"></script>
+        <script src="scripts.js" defer></script>
     </head>
     <body>
         <h1>Strip controller</h1>
@@ -15,16 +15,16 @@
         <button id="offButton">POWER OFF</button>
         <br><br>
         <div>
-            R: <input type="range" id="slideR" min="0" max="255" value="255">
-            <input type="number" id="numbeR" min="0" max="255" value="255"
+            R: <input type="range" id="sliderR" min="0" max="255" value="255">
+            <input type="number" id="numberR" min="0" max="255" value="255">
         </div>
          <div>
-            G: <input type="range" id="slideR" min="0" max="255" value="255">
-            <input type="number" id="numbeR" min="0" max="255" value="255"
+            G: <input type="range" id="sliderG" min="0" max="255" value="0">
+            <input type="number" id="numberG" min="0" max="255" value="0">
         </div>
          <div>
-            B: <input type="range" id="slideR" min="0" max="255" value="255">
-            <input type="number" id="numbeR" min="0" max="255" value="255"
+            B: <input type="range" id="sliderB" min="0" max="255" value="0">
+            <input type="number" id="numberB" min="0" max="255" value="0">
         </div>
         <button id="sendColorButton">Send color</button>
         <br><br>
