@@ -48,6 +48,13 @@ function syncPair(sliderId, numberId) {
     
 };
 
+function updateSwatch () {
+    let r = document.getElementById ("numberR").value;
+    let g = document.getElementById ("numberG").value;
+    let b = document.getElementById ("numberB").value;
+    document.getElementById("swatch").style.background	=	"rgb("	+	r	+	","	+	g	+	","	+	b	+	")";
+}
+
 syncPair("sliderR", "numberR");
 syncPair("sliderG", "numberG");
 syncPair("sliderB", "numberB");
@@ -73,6 +80,5 @@ document.getElementById("sliderBright").addEventListener("input", function() {
     let percent = parseInt(this.value);
     document.getElementById("brightLabel").textContent = percent + "%";
     setBrightness(percent);
-
 
 });
