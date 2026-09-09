@@ -2,7 +2,7 @@
 
 A web app that connects to your Bluetooth LED strip and lets you set the exact RGB color you want — no more guessing with slider or color wheels and no more failing to connect.
 
-**[Got a LED BLE device? Try  the controller here →]https://starlit-lolly-326867.netlify.app**
+**Got a LED BLE device? Try  the controller here → https://starlit-lolly-326867.netlify.app**
 
 ## Quick start
 

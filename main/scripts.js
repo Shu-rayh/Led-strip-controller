@@ -44,6 +44,11 @@ function syncPair(sliderId, numberId) {
     let number = document.getElementById(numberId);
     slider.addEventListener("input", function() {
         number.value = slider.value;
+        updateSwatch();
+    });
+    number.addEventListener("input", function(){
+        slider.value = number.value;
+        updateSwatch();
     });
     
 };
@@ -52,7 +57,8 @@ function updateSwatch () {
     let r = document.getElementById ("numberR").value;
     let g = document.getElementById ("numberG").value;
     let b = document.getElementById ("numberB").value;
-    document.getElementById("swatch").style.background	=	"rgb("	+	r	+	","	+	g	+	","	+	b	+	")";
+    document.getElementById("swatch").style.background	=	"rgb("	+	r	+	","	 +	g	+ ","  +	b +	")";
+
 }
 
 syncPair("sliderR", "numberR");
@@ -68,7 +74,11 @@ document.getElementById("sendColorButton").addEventListener("click", function() 
     let g = parseInt (document.getElementById("numberG").value);
     let b = parseInt (document.getElementById("numberB").value);
     setColor(r, g, b);
+    document.getElementById("result1").textContent = g;
+    document.getElementById("result2").textContent = b;
+
 });
+
 
 async function setBrightness(percent) {
     let bytes = new Uint8Array([0x7e, 0xff, 0x01, percent, 0x00, 0xff, 0xff, 0xff, 0xef]);

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        Celcius: <input type="number" id="celciusInput" value="20">
+        <div id="result"></div>
+
+        <script>
+            function celciusToFahrenheit (celcius){
+                return (celcius * 9 / 5) + 32;
+            }
+
+            function updateResult (){
+                let celciusInput = document.getElementById("celciusInput");
+                let celcius = parseFloat(celciusInput.value);
+                let fahrenheit = celciusToFahrenheit(celcius);
+                document.getElementById("result").textContent = celcius + "C is" + fahrenheit + "F";
+
+            }
+            document.getElementById("celciusInput").addEventListener("input", updateResult);
+            updateResult();
+        </script>
+    </body>
+</html>
