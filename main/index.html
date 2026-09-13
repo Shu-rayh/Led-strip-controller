@@ -7,41 +7,67 @@
         <script src="scripts.js" defer></script>
     </head>
     <body>
-        <h1>Strip controller</h1>
-        <button id="connectButton">connect</button>
-        <div id="status">Not connected</div>
-        <br><br>
-        <button id="onButton">POWER ON</button>
-        <button id="offButton">POWER OFF</button>
-        <br><br>
-        <div>
-            R: <input type="range" id="sliderR" min="0" max="255" value="255">
-            <input type="number" id="numberR" min="0" max="255" value="255">
+      <div class="app">
+        <div class="topbar">
+            <div>
+                <h1>LEDBLE Controller</h1>
+            </div>
+            <div class="connect">
+                <span id="status" class="status-pill">Not Connected</span>
+                <button id="connectButton" class="btn btn-primary">connect</button>
+            </div>
         </div>
-         <div>
-            G: <input type="range" id="sliderG" min="0" max="255" value="0">
-            <input type="number" id="numberG" min="0" max="255" value="0">
+
+        <div class="layout">
+            <section class="card">
+                <div class="power-button">
+                    <button id="onButton" class="btn btn-primary">ON</button>
+                    <button id="offButton" class="btn btn-ghost">OFF</button>
+                </div>
+            </section>
+
+            <section class="card" style="grid-column: 1/ -1;">
+                <h2>Colour:</h2>
+                <div id="swatch"></div>
+                <div class="channel-row">
+                    <label>R</label>
+                    <input type="range" id="sliderR" min="0" max="255" value="0">
+                    <input type="number" id="numberR" min="0" max="255" value="0">
+                </div>
+                <div class="channel-row">
+                    <label>G</label>
+                    <input type="range" id="sliderG" min="0" max="255" value="0">
+                    <input type="number" id="numberG" min="0" max="255" value="0">
+                </div>
+                <div class="channel-row">
+                    <label>B</label>
+                    <input type="range" id="sliderB" min="0" max="255" value="0">
+                    <input type="number" id="numberB" min="0" max="255" value="0">
+                </div>
+                <button id="sendColorButton" class="btn btn-primary" style="width:100%; margin-top:6px;">Send color</button>
+
+            </section>
+
+            <section class="card">
+                <h2>Brightness:</h2>
+                <div class="brightness-row">
+                    <input type="range" id="sliderBright" min="1" max="100" value="100">
+                    <span id="brightLabel">100%</span>
+                </div>
+            </section>
+
+            <section class="card presets-card" id="presetSection">
+                <h2>Presets:</h2>
+                <div class="preset-form">
+                    <input type="text" id="presetNameInput" placeholder="Preset name">
+                    <button id="savePresetButton" class="btn btn-primary">Save</button>
+                </div>
+                <div id="presetList"></div>
+            </section>
+
+            </section>            
         </div>
-         <div>
-            B: <input type="range" id="sliderB" min="0" max="255" value="0">
-            <input type="number" id="numberB" min="0" max="255" value="0">
-        </div>
-        <div id="swatch"></div>
-        <button id="sendColorButton">Send color</button>
-        <br><br>
-        Brightness:
-        <input type="range" id="sliderBright" min="1" max="100" value="100">
-        <span id="brightLabel">100%</span>
-        <br><br>
-        <div id="result1"></div>
+        <dv id="result1"></div>
         <div id="result2"></div>
-        <br><br>
-        <div id="presetSection">
-            <input type="text" id="presetNameInput" placeholder="Preset name">
-            <button id="savePresetButton">Save Preset</button>
-            <div id="presetList"></div>
-        </div>
-
-
     </body>
 </html>
