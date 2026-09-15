@@ -3,8 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <title>LEDBLE Controller</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles.css" />
         <script src="scripts.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     </head>
     <body>
       <div class="app">
@@ -12,7 +15,7 @@
             <div>
                 <h1>LEDBLE Controller</h1>
             </div>
-            <div class="connect">
+            <div class="connection">
                 <span id="status" class="status">Not Connected</span>
                 <button id="connectButton" class="btn btn-primary">connect</button>
             </div>
@@ -20,14 +23,14 @@
 
         <div class="layout">
             <section class="card">
-                <div class="power-button">
+                <div class="power-buttons">
                     <button id="onButton" class="btn btn-primary">ON</button>
                     <button id="offButton" class="btn btn-ghost">OFF</button>
                 </div>
             </section>
 
             <section class="card" style="grid-column: 1/ -1;">
-                <h2>Colour:</h2>
+                <h2>color:</h2>
                 <div id="swatch"></div>
                 <div class="channel-row">
                     <label>R</label>
@@ -56,7 +59,7 @@
                 </div>
             </section>
 
-            <section class="card presets-card" id="presetSection">
+            <section class="card preset-card" id="presetSection">
                 <h2>Presets:</h2>
                 <div class="preset-form">
                     <input type="text" id="presetNameInput" placeholder="Preset name">
@@ -64,10 +67,8 @@
                 </div>
                 <div id="presetList"></div>
             </section>
-
-            </section>            
+           
         </div>
-        <dv id="result1"></div>
-        <div id="result2"></div>
     </body>
+    <footer>Requires Chrome or Edge on desktop or Android. Web Bluetooth isn't supported on iOS.</footer>
 </html>

@@ -1,7 +1,7 @@
 let device = null;
 let characteristic = null;
 
-// bluetooth
+// connect
 async function connect() {
     device = await navigator.bluetooth.requestDevice({
         acceptAllDevices: true,
@@ -15,12 +15,11 @@ async function connect() {
     document.getElementById("status").textContent = "Connected";
 };
 
-// connect button
 document.getElementById("connectButton").addEventListener("click", function() {
     connect();
 });
 
-// turn on off
+// On/Off
 async function turnOn() {
     let bytes = new Uint8Array([0x7e, 0xff, 0x04, 0x01, 0xff, 0xff, 0xff, 0xff, 0xef]);
     await characteristic.writeValueWithResponse(bytes);
@@ -41,7 +40,7 @@ document.getElementById("offButton").addEventListener("click", function() {
     turnOff();
 });
 
-// colors and swatch
+// send color & swatch
 function syncPair(sliderId, numberId) {
     let slider = document.getElementById(sliderId);
     let number = document.getElementById(numberId);
@@ -74,8 +73,6 @@ document.getElementById("sendColorButton").addEventListener("click", function() 
     let g = parseInt (document.getElementById("numberG").value);
     let b = parseInt (document.getElementById("numberB").value);
     setColor(r, g, b);
-    document.getElementById("result1").textContent = g;
-    document.getElementById("result2").textContent = b;
 
 });
 
@@ -84,7 +81,7 @@ async function  setColor(r, g, b) {
     await characteristic.writeValueWithResponse(bytes);
 };
 
-// brightness
+// Brightness
 async function setBrightness(percent) {
     let bytes = new Uint8Array([0x7e, 0xff, 0x01, percent, 0x00, 0xff, 0xff, 0xff, 0xef]);
     await characteristic.writeValueWithResponse(bytes);
@@ -98,17 +95,17 @@ document.getElementById("sliderBright").addEventListener("input", function() {
 
 });
 
-// preset (wip))
-const PRESET_STORAGE_KEY = "ledPresets";
+// Preset 
+const PRESET_STORAGE = "ledPresets";
 let editingId = null;
 
 function loadPresets(){
-    let stored = localStorage.getItem(PRESET_STORAGE_KEY);
+    let stored = localStorage.getItem(PRESET_STORAGE);
     return stored ? JSON.parse(stored) :[];
 }
 
 function storePresets(presets){
-    localStorage.setItem(PRESET_STORAGE_KEY, JSON.stringify(presets));
+    localStorage.setItem(PRESET_STORAGE, JSON.stringify(presets));
 }
 
 function savePreset(){
@@ -235,22 +232,22 @@ function renderPresets(){
             overwriteLabel.appendChild(overwriteCheckbox);
             overwriteLabel.appendChild(document.createTextNode(" update to current color/brightness"));
 
-            let saveBtn = document.createElement("button");
-            saveBtn.textContent = "Save";
-            saveBtn.addEventListener("click", function(){
+            let saveButton = document.createElement("button");
+            saveButton.textContent = "Save";
+            saveButton.addEventListener("click", function(){
                 saveEdit(preset.id);
             });
 
-            let cancelBtn = document.createElement("button");
-            cancelBtn.textContent = "Cancel";
-            cancelBtn.addEventListener("click", function(){
+            let cancelButton = document.createElement("button");
+            cancelButton.textContent = "Cancel";
+            cancelButton.addEventListener("click", function(){
                 cancelEdit();
             });
 
             item.appendChild(nameInput);
             item.appendChild(overwriteLabel);
-            item.appendChild(saveBtn);
-            item.appendChild(cancelBtn);
+            item.appendChild(saveButton);
+            item.appendChild(cancelButton);
         } else {
             let label = document.createElement("span");
             label.textContent = " " + preset.name + " ";
