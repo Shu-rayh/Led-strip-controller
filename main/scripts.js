@@ -88,7 +88,7 @@ async function setBrightness(percent) {
     
 };
 
-document.getElementById("sliderBright").addEventListener("input", function() {
+document.getElementById("brightnessSlider").addEventListener("input", function() {
     let percent = parseInt(this.value);
     document.getElementById("brightLabel").textContent = percent + "%";
     setBrightness(percent);
@@ -120,7 +120,7 @@ function savePreset(){
     let r = parseInt(document.getElementById("numberR").value);
     let g = parseInt(document.getElementById("numberG").value);
     let b = parseInt(document.getElementById("numberB").value);
-    let brightness = parseInt(document.getElementById("sliderBright").value);
+    let brightness = parseInt(document.getElementById("brightnessSlider").value);
 
     let newPreset = {
     id: Date.now(),
@@ -173,7 +173,7 @@ function saveEdit(id){
         preset.r = parseInt(document.getElementById("numberR").value);
         preset.g = parseInt(document.getElementById("numberG").value);
         preset.b = parseInt(document.getElementById("numberB").value);
-        preset.brightness = parseInt(document.getElementById("sliderBright").value);
+        preset.brightness = parseInt(document.getElementById("brightnessSlider").value);
     }
 
     storePresets(presets);
@@ -188,7 +188,7 @@ function applyPresets(preset){
     document.getElementById("numberG").value = preset.g;
     document.getElementById("sliderB").value = preset.b;
     document.getElementById("numberB").value = preset.b;
-    document.getElementById("sliderBright").value = preset.brightness;
+    document.getElementById("brightnessSlider").value = preset.brightness;
     document.getElementById("brightLabel").textContent = preset.brightness + "%";
     updateSwatch();
 
