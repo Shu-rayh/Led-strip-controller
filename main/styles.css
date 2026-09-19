@@ -1,16 +1,16 @@
 :root{
---bg:#222831;
+--background:#222831;
 --surface: #31363F;
 --accent: #76ABAE;
 --text: #EEEEEE;
 --line: rgba(238,238,238,.08);
---dimmertxt: #868a92;
+--lightText: #868a92;
 }
 
 *{box-sizing: border-box;}
 body{
     margin: 0;
-    background: var(--bg);
+    background: var(--background);
     color: var(--text);
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -57,18 +57,18 @@ body{
     color: var(--accent);
 }
 
-.btn{
+.button{
     border: none; cursor: pointer; border-radius: 10px;
     padding: 10px 18px; font-size: .88rem; font-weight: 600;
     font-family: inhert; transition: filter .15s ease, transform .1s ease;
 }
-.btn:active{ transform: scale(.97);}
-.btn-primary{ background: var(--accent); color: #132224;}
-.btn-primary:hover{filter:brightness(1.1);}
-.btn-ghost{background:transparent; color:var(--accent); border: 1px solid var(--accent);}
-.btn-ghost:hover{background: rgba(118,171,174,.1);}
+.button:active{ transform: scale(.97);}
+.button-primary{ background: var(--accent); color: #132224;}
+.button-primary:hover{filter:brightness(1.1);}
+.button-ghost{background:transparent; color:var(--accent); border: 1px solid var(--accent);}
+.button-ghost:hover{background: rgba(118,171,174,.1);}
 .power-buttons{display: flex; gap: 12px;}
-.power-buttons .btn{flex:1;}
+.power-buttons .button{flex:1;}
 
 .channel-row{display:flex; align-items: center; gap: 14px; margin-bottom: 14px;}
 .channel-row:last-of-type{margin-bottom: 0;}
@@ -115,7 +115,7 @@ input[type="number"]{
     -webkit-appearance: none;
     -moz-appearance: textfield;
     width: 70px;
-    background: var(--bg);
+    background: var(--background);
     border: var(--line);
     border-radius: 999px;
     padding: 9px 14px;
@@ -168,7 +168,7 @@ input[type="number"]:focus{
 
 #presetNameInput{
     flex: 1;
-    background: var(--bg);
+    background: var(--background);
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 10px 14px;
@@ -184,7 +184,7 @@ input[type="number"]:focus{
 }
 
 .presetItem{
-    background: var(--bg);
+    background: var(--background);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 16px 14px;
@@ -252,7 +252,7 @@ input[type="number"]:focus{
 footer{
     margin-top:22px;
     font-size:11.5px;
-    color:var(--dimmertxt);
+    color:var(--lightText);
     line-height:1.6;
     text-align:center;
 }
@@ -319,7 +319,7 @@ footer{
         flex-direction: column;
     }
 
-    .preset-form .btn{
+    .preset-form .button{
         width: 100%;
     }
 
@@ -328,9 +328,52 @@ footer{
         gap: 10px;
     }
 
-    .btn{
+    .button{
         padding: 11px 16px;
         font-size: .85rem;
     }
     
+}
+
+.emulatorWrap {
+    flex: 0 0 100%;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.emulatorStrip {
+    display: none;
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #76ABAE;
+}
+
+.emulatorLog {
+    margin-top: 8px;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    background: #222831;
+    color: #76ABAE;
+    border-radius: 6px;
+    font-family: monospace;
+    font-size: 13px;
+    word-break: break-all;
+}
+
+@media (max-width: 600px) {
+    #connectButton,
+    #demoButton {
+        width: 100%;
+        min-height: 44px;
+        margin-top: 8px;
+    }
+
+    .emulatorStrip {
+        height: 56px;
+    }
+
+    .emulatorLog {
+        font-size: 12px;
+    }
 }

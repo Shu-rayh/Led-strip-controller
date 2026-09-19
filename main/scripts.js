@@ -19,6 +19,16 @@ document.getElementById("connectButton").addEventListener("click", function() {
     connect();
 });
 
+function startDemo(){
+    characteristic = makeFakeChar();
+    document.getElementById("emulatorStrip").style.display = "block";
+    document.getElementById("status").textContent = "Connected (Demo)";
+}
+
+document.getElementById("demoButton").addEventListener("click", function(){
+    startDemo();
+})
+
 // On/Off
 async function turnOn() {
     let bytes = new Uint8Array([0x7e, 0xff, 0x04, 0x01, 0xff, 0xff, 0xff, 0xff, 0xef]);
@@ -70,8 +80,8 @@ syncPair("sliderB", "numberB");
 
 document.getElementById("sendColorButton").addEventListener("click", function() {
     let r = parseInt (document.getElementById("numberR").value);
-    let g = parseInt (document.getElementById("numberG").value);
-    let b = parseInt (document.getElementById("numberB").value);
+    let g = parseInt (document.getElementById("numberG").value /2);
+    let b = parseInt (document.getElementById("numberB").value /2);
     setColor(r, g, b);
 
 });
@@ -252,21 +262,21 @@ function renderPresets(){
             let label = document.createElement("span");
             label.textContent = " " + preset.name + " ";
 
-            let editBtn = document.createElement("button");
-            editBtn.textContent = "Edit";
-            editBtn.addEventListener("click", function(){
+            let editbutton = document.createElement("button");
+            editbutton.textContent = "Edit";
+            editbutton.addEventListener("click", function(){
                 editPreset(preset.id);
             });
 
-            let deleteBtn = document.createElement("button");
-            deleteBtn.textContent = "Delete";
-            deleteBtn.addEventListener("click", function(){
+            let deletebutton = document.createElement("button");
+            deletebutton.textContent = "Delete";
+            deletebutton.addEventListener("click", function(){
                 deletePreset(preset.id);
             });
 
             item.appendChild(label);
-            item.appendChild(editBtn);
-            item.appendChild(deleteBtn);
+            item.appendChild(editbutton);
+            item.appendChild(deletebutton);
         }
 
         list.appendChild(item);
